@@ -1,0 +1,8 @@
+{
+  "appId": "com.memo.app",
+  "appName": "智能备忘录",
+  "webDir": "dist",
+  "server": {
+    "androidScheme": "https"
+  }
+}
