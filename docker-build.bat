@@ -33,9 +33,9 @@ docker rmi %IMAGE_NAME%:%IMAGE_TAG% 2>nul
 echo [完成] 旧镜像已删除
 echo.
 
-:: 构建新镜像
+:: 构建新镜像（使用 --no-cache 强制重新构建）
 echo [步骤3] 构建 Docker 镜像...
-docker build -t %IMAGE_NAME%:%IMAGE_TAG% .
+docker build --no-cache -t %IMAGE_NAME%:%IMAGE_TAG% .
 if %ERRORLEVEL% neq 0 (
     echo [错误] Docker 镜像构建失败！
     pause

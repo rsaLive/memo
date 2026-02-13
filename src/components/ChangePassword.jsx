@@ -31,7 +31,9 @@ const ChangePassword = ({ userId, onBack, onSuccess }) => {
     setIsLoading(true)
 
     try {
-      const response = await fetch('http://localhost:8001/api/user/change-password', {
+      // API 地址 - 从环境变量读取
+      const API_BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:8001';
+      const response = await fetch(`${API_BASE_URL}/api/user/change-password`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

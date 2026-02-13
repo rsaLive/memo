@@ -1,7 +1,7 @@
 // API 配置和请求工具
 
-// API 基础地址
-const API_BASE_URL = 'http://localhost:8001/api/v1'
+// API 基础地址 - 从环境变量读取
+const API_BASE_URL = `${import.meta.env.VITE_API_URL || 'http://localhost:8001'}/api/v1`
 
 // 从 localStorage 获取 token
 const getToken = () => {
