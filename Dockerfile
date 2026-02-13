@@ -13,6 +13,9 @@ RUN npm install
 # 复制源代码
 COPY . .
 
+# 复制测试服配置文件作为 .env (Docker 构建使用测试服配置)
+COPY .env.test .env
+
 # 构建生产版本
 RUN npm run build
 
