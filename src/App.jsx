@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react'
-import { Bell, Plus, Check, Clock, X, Edit2, Calendar, Mail, LogOut, User } from 'lucide-react'
+import { Bell, Plus, Check, Clock, X, Edit2, Calendar, Mail, LogOut, User, Shield } from 'lucide-react'
 import MemoForm from './components/MemoForm'
 import MemoCard from './components/MemoCard'
 import Login from './components/Login'
+import IOSCertCheck from './components/IOSCertCheck'
 import { getMemos, saveMemos, updateMemoStatus, deleteMemo, postponeMemo } from './utils/storage'
 import { isLoggedIn, getCurrentUser, logout } from './utils/auth'
 
@@ -13,6 +14,7 @@ function App() {
   const [showForm, setShowForm] = useState(false)
   const [editingMemo, setEditingMemo] = useState(null)
   const [filter, setFilter] = useState('all') // all, pending, completed, expired
+  const [currentView, setCurrentView] = useState('memos') // 'memos' or 'ios-cert'
 
   useEffect(() => {
     // 检查登录状态
@@ -170,6 +172,11 @@ function App() {
     return <Login onLogin={handleLogin} />
   }
 
+  // 如果是IOS证书检测视图，直接返回该组件
+  if (currentView === 'ios-cert') {
+    return <IOSCertCheck onBack={() => setCurrentView('memos')} />
+  }
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50">
       {/* Header */}
@@ -191,6 +198,14 @@ function App() {
               </div>
             </div>
             <div className="flex items-center space-x-2">
+              <button
+                onClick={() => setCurrentView('ios-cert')}
+                className="bg-gradient-to-r from-purple-500 to-pink-600 text-white px-4 py-2 rounded-lg flex items-center space-x-2 hover:from-purple-600 hover:to-pink-700 transition-all shadow-md hover:shadow-lg"
+                title="iOS证书检测"
+              >
+                <Shield className="w-5 h-5" />
+                <span className="hidden sm:inline">证书检测</span>
+              </button>
               <button
                 onClick={() => {
                   setEditingMemo(null)
