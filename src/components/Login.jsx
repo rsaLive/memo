@@ -139,9 +139,9 @@ const Login = ({ onLogin }) => {
                   记住密码
                 </span>
               </label>
-              <a href="#" className="text-sm text-blue-600 hover:text-blue-700 font-medium transition-colors">
+              {/* <a href="#" className="text-sm text-blue-600 hover:text-blue-700 font-medium transition-colors">
                 忘记密码？
-              </a>
+              </a> */}
             </div>
 
             {/* 错误提示 */}
@@ -170,13 +170,6 @@ const Login = ({ onLogin }) => {
               )}
             </button>
           </form>
-
-          {/* 演示提示 */}
-          <div className="mt-6 p-4 bg-blue-50 border border-blue-200 rounded-xl">
-            <p className="text-xs text-blue-800 text-center">
-              💡 测试账号：admin / admin123 或 test / test123
-            </p>
-          </div>
         </div>
 
         {/* 底部版权 */}

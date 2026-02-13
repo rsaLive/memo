@@ -21,6 +21,7 @@ const IPAMonitor = ({ onBack }) => {
   const [formName, setFormName] = useState('');
   const [formURL, setFormURL] = useState('');
   const [formEmail, setFormEmail] = useState('');
+  const [formVersion, setFormVersion] = useState('');
 
   const showAlert = (type, message) => {
     setAlert({ type, message });
@@ -64,6 +65,7 @@ const IPAMonitor = ({ onBack }) => {
             name: formName.trim() || '未命名监控',
             download_url: formURL.trim(),
             notify_email: formEmail.trim(),
+            version: formVersion.trim() || editingMonitor.version || 'v1',
             enabled: editingMonitor.enabled,
           }),
         });
@@ -75,6 +77,7 @@ const IPAMonitor = ({ onBack }) => {
             name: formName.trim() || '未命名监控',
             download_url: formURL.trim(),
             notify_email: formEmail.trim(),
+            version: formVersion.trim() || 'v1',
           }),
         });
       }
@@ -118,6 +121,7 @@ const IPAMonitor = ({ onBack }) => {
           name: monitor.name,
           download_url: monitor.download_url,
           notify_email: monitor.notify_email,
+          version: monitor.version || 'v1',
           enabled: !monitor.enabled,
         }),
       });
@@ -185,6 +189,7 @@ const IPAMonitor = ({ onBack }) => {
     setFormName(monitor.name);
     setFormURL(monitor.download_url);
     setFormEmail(monitor.notify_email);
+    setFormVersion(monitor.version || 'v1');
     setShowForm(true);
   };
 
@@ -194,6 +199,7 @@ const IPAMonitor = ({ onBack }) => {
     setFormName('');
     setFormURL('');
     setFormEmail('');
+    setFormVersion('v1');
     setShowForm(true);
   };
 
@@ -204,6 +210,7 @@ const IPAMonitor = ({ onBack }) => {
     setFormName('');
     setFormURL('');
     setFormEmail('');
+    setFormVersion('');
   };
 
   // 格式化时间
@@ -351,6 +358,12 @@ const IPAMonitor = ({ onBack }) => {
                     <span className="monitor-info-value">{m.last_app_name || '-'}</span>
                   </div>
                   <div className="monitor-info-item">
+                    <span className="monitor-info-label">IPA版本号</span>
+                    <span className="monitor-info-value" style={{fontWeight: 600, color: '#667eea'}}>
+                      {m.version || 'v1'}
+                    </span>
+                  </div>
+                  <div className="monitor-info-item">
                     <span className="monitor-info-label">证书名称</span>
                     <span className="monitor-info-value">{m.last_cert_name || '-'}</span>
                   </div>
@@ -436,6 +449,18 @@ const IPAMonitor = ({ onBack }) => {
                   />
                   <div className="form-hint">掉签或过期时将发送邮件通知到此邮箱</div>
                 </div>
+                <div className="form-group">
+                  <label>版本号</label>
+                  <input
+                    type="text"
+                    value={formVersion}
+                    onChange={(e) => setFormVersion(e.target.value)}
+                    placeholder="v1"
+                  />
+                  <div className="form-hint">
+                    用于本地缓存管理，修改版本号会触发重新下载（建议：v1、v2、v1.0、2024-02-13）
+                  </div>
+                </div>
                 <div className="form-actions">
                   <button type="button" className="btn-cancel" onClick={closeForm}>取消</button>
                   <button type="submit" className="btn-primary">
@@ -452,7 +477,17 @@ const IPAMonitor = ({ onBack }) => {
           <div className="monitor-modal-overlay" onClick={() => { setShowLogs(null); setLogs([]); }}>
             <div className="monitor-modal logs-modal" onClick={(e) => e.stopPropagation()}>
               <div className="monitor-modal-header">
-                <h3>检测日志</h3>
+                <h3>
+                  检测日志
+                  {(() => {
+                    const currentMonitor = monitors.find(m => m.id === showLogs);
+                    return currentMonitor ? (
+                      <span style={{fontSize: 14, fontWeight: 'normal', color: '#667eea', marginLeft: 12}}>
+                        {currentMonitor.name} (版本: {currentMonitor.version || 'v1'})
+                      </span>
+                    ) : null;
+                  })()}
+                </h3>
                 <button className="modal-close-btn" onClick={() => { setShowLogs(null); setLogs([]); }}>×</button>
               </div>
               <div className="logs-list">

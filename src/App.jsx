@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from 'react'
-import { Bell, Plus, Check, Clock, X, Edit2, Calendar, Mail, LogOut, User, Shield, Radio } from 'lucide-react'
+import { Bell, Plus, Check, Clock, X, Edit2, Calendar, Mail, LogOut, User, Shield, Radio, Lock, Settings } from 'lucide-react'
 import MemoForm from './components/MemoForm'
 import MemoCard from './components/MemoCard'
 import Login from './components/Login'
 import IOSCertCheck from './components/IOSCertCheck'
 import IPAMonitor from './components/IPAMonitor'
+import ChangePassword from './components/ChangePassword'
 import { getMemos, saveMemos, updateMemoStatus, deleteMemo, postponeMemo } from './utils/storage'
 import { isLoggedIn, getCurrentUser, logout } from './utils/auth'
 
@@ -183,6 +184,20 @@ function App() {
     return <IPAMonitor onBack={() => setCurrentView('memos')} />
   }
 
+  // 密码修改视图
+  if (currentView === 'change-password') {
+    return (
+      <ChangePassword
+        userId={currentUser?.userId || 1}
+        onBack={() => setCurrentView('memos')}
+        onSuccess={() => {
+          alert('密码修改成功！请重新登录')
+          handleLogout()
+        }}
+      />
+    )
+  }
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50">
       {/* Header */}
@@ -206,29 +221,37 @@ function App() {
             <div className="flex items-center space-x-2">
               <button
                 onClick={() => setCurrentView('ipa-monitor')}
-                className="bg-gradient-to-r from-teal-500 to-cyan-600 text-white px-4 py-2 rounded-lg flex items-center space-x-2 hover:from-teal-600 hover:to-cyan-700 transition-all shadow-md hover:shadow-lg"
+                className="bg-gradient-to-r from-teal-500 to-cyan-600 text-white px-3 py-2 rounded-lg flex items-center space-x-2 hover:from-teal-600 hover:to-cyan-700 transition-all shadow-md hover:shadow-lg"
                 title="IPA掉签监控"
               >
                 <Radio className="w-5 h-5" />
-                <span className="hidden sm:inline">掉签监控</span>
+                <span className="hidden md:inline">掉签监控</span>
               </button>
               <button
                 onClick={() => setCurrentView('ios-cert')}
-                className="bg-gradient-to-r from-purple-500 to-pink-600 text-white px-4 py-2 rounded-lg flex items-center space-x-2 hover:from-purple-600 hover:to-pink-700 transition-all shadow-md hover:shadow-lg"
+                className="bg-gradient-to-r from-purple-500 to-pink-600 text-white px-3 py-2 rounded-lg flex items-center space-x-2 hover:from-purple-600 hover:to-pink-700 transition-all shadow-md hover:shadow-lg"
                 title="iOS证书检测"
               >
                 <Shield className="w-5 h-5" />
-                <span className="hidden sm:inline">证书检测</span>
+                <span className="hidden md:inline">证书检测</span>
+              </button>
+              <button
+                onClick={() => setCurrentView('change-password')}
+                className="bg-gradient-to-r from-orange-500 to-red-600 text-white px-3 py-2 rounded-lg flex items-center space-x-2 hover:from-orange-600 hover:to-red-700 transition-all shadow-md hover:shadow-lg"
+                title="修改密码"
+              >
+                <Lock className="w-5 h-5" />
+                <span className="hidden md:inline">改密码</span>
               </button>
               <button
                 onClick={() => {
                   setEditingMemo(null)
                   setShowForm(true)
                 }}
-                className="bg-gradient-to-r from-blue-500 to-indigo-600 text-white px-4 py-2 rounded-lg flex items-center space-x-2 hover:from-blue-600 hover:to-indigo-700 transition-all shadow-md hover:shadow-lg"
+                className="bg-gradient-to-r from-blue-500 to-indigo-600 text-white px-3 py-2 rounded-lg flex items-center space-x-2 hover:from-blue-600 hover:to-indigo-700 transition-all shadow-md hover:shadow-lg"
               >
                 <Plus className="w-5 h-5" />
-                <span className="hidden sm:inline">新建备忘</span>
+                <span className="hidden md:inline">新建备忘</span>
               </button>
               <button
                 onClick={handleLogout}

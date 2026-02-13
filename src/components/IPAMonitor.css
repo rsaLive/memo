@@ -560,27 +560,262 @@
   to { transform: rotate(360deg); }
 }
 
-/* 响应式 */
+/* H5移动端适配 */
 @media (max-width: 768px) {
+  .ipa-monitor {
+    padding: 12px;
+  }
+
   .monitor-header {
     flex-direction: column;
     align-items: flex-start;
+    margin-bottom: 16px;
+  }
+
+  .monitor-header-left {
+    width: 100%;
+  }
+
+  .monitor-title {
+    font-size: 22px;
+  }
+
+  .monitor-subtitle {
+    font-size: 13px;
+  }
+
+  .monitor-header-actions {
+    width: 100%;
+    flex-wrap: wrap;
+  }
+
+  .monitor-header-actions button {
+    flex: 1;
+    min-width: 120px;
+  }
+
+  .monitor-stats {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+    margin-bottom: 16px;
+  }
+
+  .stat-card {
+    padding: 16px;
+  }
+
+  .stat-number {
+    font-size: 28px;
+  }
+
+  .stat-label {
+    font-size: 12px;
+  }
+
+  .monitor-card {
+    padding: 16px;
+    border-radius: 10px;
+  }
+
+  .monitor-card-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  .monitor-card-name {
+    font-size: 16px;
+    width: 100%;
+  }
+
+  .monitor-card-actions {
+    width: 100%;
+    justify-content: flex-start;
+    flex-wrap: wrap;
   }
   
   .monitor-card-body {
     grid-template-columns: 1fr;
+    gap: 10px;
+  }
+
+  .monitor-info-label {
+    font-size: 11px;
+  }
+
+  .monitor-info-value {
+    font-size: 13px;
   }
 
   .monitor-card-footer {
     flex-direction: column;
     align-items: flex-start;
+    gap: 6px;
   }
 
   .monitor-url {
     max-width: 100%;
+    font-size: 11px;
+  }
+
+  .monitor-modal-overlay {
+    padding: 12px;
+  }
+
+  .monitor-modal {
+    max-width: 100%;
+  }
+
+  .monitor-modal-header {
+    padding: 16px;
+  }
+
+  .monitor-modal-header h3 {
+    font-size: 16px;
+  }
+
+  .monitor-form {
+    padding: 16px;
+  }
+
+  .form-group {
+    margin-bottom: 16px;
+  }
+
+  .form-group label {
+    font-size: 13px;
+  }
+
+  .form-group input,
+  .form-group textarea {
+    padding: 10px 12px;
+    font-size: 14px;
+  }
+
+  .form-group .form-hint {
+    font-size: 11px;
+  }
+
+  .form-actions {
+    flex-direction: column;
+  }
+
+  .form-actions button {
+    width: 100%;
+  }
+
+  .logs-list {
+    padding: 16px;
+    max-height: 400px;
+  }
+
+  .log-item {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+    padding: 10px 0;
+  }
+
+  .log-time {
+    min-width: auto;
+    font-size: 12px;
+  }
+
+  .log-status {
+    min-width: auto;
+  }
+
+  .log-detail {
+    font-size: 12px;
+  }
+}
+
+/* 小屏手机 */
+@media (max-width: 480px) {
+  .ipa-monitor {
+    padding: 10px;
+  }
+
+  .monitor-title {
+    font-size: 20px;
+  }
+
+  .monitor-subtitle {
+    font-size: 12px;
+  }
+
+  .monitor-back-btn {
+    padding: 6px 12px;
+    font-size: 13px;
+  }
+
+  .btn-primary,
+  .btn-secondary {
+    padding: 8px 16px;
+    font-size: 13px;
   }
 
   .monitor-stats {
-    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+  }
+
+  .stat-card {
+    padding: 14px;
+  }
+
+  .stat-number {
+    font-size: 24px;
+  }
+
+  .monitor-card {
+    padding: 14px;
+  }
+
+  .monitor-card-name {
+    font-size: 15px;
+  }
+
+  .btn-small {
+    padding: 5px 10px;
+    font-size: 12px;
+  }
+
+  .monitor-card-actions {
+    gap: 6px;
+  }
+
+  .monitor-info-label {
+    font-size: 10px;
+  }
+
+  .monitor-info-value {
+    font-size: 12px;
+  }
+
+  .m-status-badge {
+    padding: 3px 10px;
+    font-size: 12px;
+  }
+
+  .monitor-modal-header {
+    padding: 14px;
+  }
+
+  .monitor-form {
+    padding: 14px;
+  }
+
+  .form-group input,
+  .form-group textarea {
+    padding: 9px 11px;
+    font-size: 13px;
+  }
+
+  .logs-list {
+    padding: 14px;
+  }
+
+  .log-item {
+    padding: 8px 0;
   }
 }

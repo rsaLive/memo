@@ -336,33 +336,220 @@
   margin-right: 8px;
 }
 
-/* 响应式设计 */
+/* H5移动端适配 */
 @media (max-width: 768px) {
   .check-container {
-    padding: 20px;
+    padding: 16px;
   }
 
   .title {
-    font-size: 24px;
+    font-size: 22px;
   }
 
   .subtitle {
+    font-size: 13px;
+  }
+
+  .tabs {
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .tab-btn {
+    flex: 1;
     font-size: 14px;
+    padding: 10px 16px;
+  }
+
+  .tab-content {
+    padding: 20px 16px;
+  }
+
+  .upload-area {
+    padding: 30px 16px;
+  }
+
+  .upload-icon {
+    width: 50px;
+    height: 50px;
+    font-size: 24px;
+  }
+
+  .upload-text {
+    font-size: 15px;
+  }
+
+  .upload-hint {
+    font-size: 12px;
   }
 
   .result-grid {
     grid-template-columns: 1fr;
+    gap: 12px;
   }
 
   .result-item {
     flex-direction: column;
     align-items: flex-start;
-    gap: 5px;
+    gap: 4px;
+  }
+
+  .result-item .label {
+    font-size: 11px;
   }
 
   .result-item .value {
     max-width: 100%;
     text-align: left;
+    font-size: 13px;
+  }
+
+  .status-badge {
+    padding: 4px 10px;
+    font-size: 12px;
+  }
+
+  .file-info {
+    padding: 12px;
+    gap: 8px;
+  }
+
+  .file-info-text {
+    font-size: 13px;
+  }
+
+  .file-size {
+    font-size: 11px;
+  }
+
+  .check-btn {
+    padding: 11px 24px;
+    font-size: 14px;
+  }
+
+  .info-section {
+    margin-top: 20px;
+    padding: 16px;
+  }
+
+  .info-section h3 {
+    font-size: 15px;
+  }
+
+  .info-section li {
+    font-size: 13px;
+    padding: 6px 0;
+  }
+
+  .history-table {
+    font-size: 13px;
+  }
+
+  .history-table th,
+  .history-table td {
+    padding: 10px 8px;
+  }
+}
+
+/* 小屏手机 */
+@media (max-width: 480px) {
+  .check-container {
+    padding: 12px;
+  }
+
+  .title {
+    font-size: 20px;
+  }
+
+  .subtitle {
+    font-size: 12px;
+  }
+
+  .tabs {
+    gap: 6px;
+  }
+
+  .tab-btn {
+    padding: 9px 14px;
+    font-size: 13px;
+  }
+
+  .tab-content {
+    padding: 16px 12px;
+  }
+
+  .upload-area {
+    padding: 24px 12px;
+  }
+
+  .upload-icon {
+    width: 45px;
+    height: 45px;
+    font-size: 22px;
+  }
+
+  .upload-text {
+    font-size: 14px;
+  }
+
+  .upload-hint {
+    font-size: 11px;
+  }
+
+  .result-grid {
+    gap: 10px;
+  }
+
+  .result-item .label {
+    font-size: 10px;
+  }
+
+  .result-item .value {
+    font-size: 12px;
+  }
+
+  .status-badge {
+    padding: 3px 8px;
+    font-size: 11px;
+  }
+
+  .file-info {
+    padding: 10px;
+  }
+
+  .file-info-text {
+    font-size: 12px;
+  }
+
+  .file-size {
+    font-size: 10px;
+  }
+
+  .check-btn {
+    padding: 10px 20px;
+    font-size: 13px;
+  }
+
+  .info-section {
+    padding: 14px;
+    margin-top: 16px;
+  }
+
+  .info-section h3 {
+    font-size: 14px;
+  }
+
+  .info-section li {
+    font-size: 12px;
+  }
+
+  .history-table {
+    font-size: 12px;
+  }
+
+  .history-table th,
+  .history-table td {
+    padding: 8px 6px;
   }
 }
 
