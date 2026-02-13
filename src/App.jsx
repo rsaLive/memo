@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react'
-import { Bell, Plus, Check, Clock, X, Edit2, Calendar, Mail, LogOut, User, Shield } from 'lucide-react'
+import { Bell, Plus, Check, Clock, X, Edit2, Calendar, Mail, LogOut, User, Shield, Radio } from 'lucide-react'
 import MemoForm from './components/MemoForm'
 import MemoCard from './components/MemoCard'
 import Login from './components/Login'
 import IOSCertCheck from './components/IOSCertCheck'
+import IPAMonitor from './components/IPAMonitor'
 import { getMemos, saveMemos, updateMemoStatus, deleteMemo, postponeMemo } from './utils/storage'
 import { isLoggedIn, getCurrentUser, logout } from './utils/auth'
 
@@ -177,6 +178,11 @@ function App() {
     return <IOSCertCheck onBack={() => setCurrentView('memos')} />
   }
 
+  // IPA掉签监控视图
+  if (currentView === 'ipa-monitor') {
+    return <IPAMonitor onBack={() => setCurrentView('memos')} />
+  }
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50">
       {/* Header */}
@@ -198,6 +204,14 @@ function App() {
               </div>
             </div>
             <div className="flex items-center space-x-2">
+              <button
+                onClick={() => setCurrentView('ipa-monitor')}
+                className="bg-gradient-to-r from-teal-500 to-cyan-600 text-white px-4 py-2 rounded-lg flex items-center space-x-2 hover:from-teal-600 hover:to-cyan-700 transition-all shadow-md hover:shadow-lg"
+                title="IPA掉签监控"
+              >
+                <Radio className="w-5 h-5" />
+                <span className="hidden sm:inline">掉签监控</span>
+              </button>
               <button
                 onClick={() => setCurrentView('ios-cert')}
                 className="bg-gradient-to-r from-purple-500 to-pink-600 text-white px-4 py-2 rounded-lg flex items-center space-x-2 hover:from-purple-600 hover:to-pink-700 transition-all shadow-md hover:shadow-lg"
