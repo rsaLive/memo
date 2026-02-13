@@ -1,0 +1,62 @@
+version: '3.8'
+
+services:
+  # 前端服务
+  frontend:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: memo-frontend:latest
+    container_name: memo-frontend
+    ports:
+      - "3000:80"
+    restart: unless-stopped
+    networks:
+      - memo-network
+    environment:
+      - NODE_ENV=production
+    healthcheck:
+      test: ["CMD", "wget", "--quiet", "--tries=1", "--spider", "http://localhost/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+
+  # 后端服务（如果需要一起部署）
+  # backend:
+  #   image: ql-forge:latest
+  #   container_name: memo-backend
+  #   ports:
+  #     - "8001:8001"
+  #   restart: unless-stopped
+  #   networks:
+  #     - memo-network
+  #   environment:
+  #     - DATABASE_HOST=mysql
+  #     - DATABASE_PORT=3306
+  #   depends_on:
+  #     - mysql
+
+  # MySQL 数据库（如果需要）
+  # mysql:
+  #   image: mysql:8.0
+  #   container_name: memo-mysql
+  #   ports:
+  #     - "3306:3306"
+  #   restart: unless-stopped
+  #   networks:
+  #     - memo-network
+  #   environment:
+  #     - MYSQL_ROOT_PASSWORD=your_root_password
+  #     - MYSQL_DATABASE=memo
+  #     - MYSQL_USER=memo_user
+  #     - MYSQL_PASSWORD=your_password
+  #   volumes:
+  #     - mysql-data:/var/lib/mysql
+
+networks:
+  memo-network:
+    driver: bridge
+
+volumes:
+  mysql-data:
