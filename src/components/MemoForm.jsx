@@ -8,7 +8,7 @@ const MemoForm = ({ initialData, onSubmit, onCancel }) => {
     dueDate: '',
     dueTime: '09:00',
     reminderMinutes: 30,
-    email: ''
+    email: '570956418@qq.com'
   })
 
   useEffect(() => {

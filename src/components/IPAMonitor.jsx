@@ -21,7 +21,7 @@ const IPAMonitor = ({ onBack }) => {
   // 表单状态
   const [formName, setFormName] = useState('');
   const [formURL, setFormURL] = useState('');
-  const [formEmail, setFormEmail] = useState('');
+  const [formEmail, setFormEmail] = useState('570956418@qq.com');
   const [formVersion, setFormVersion] = useState('');
 
   const showAlert = (type, message) => {
@@ -199,7 +199,7 @@ const IPAMonitor = ({ onBack }) => {
     setEditingMonitor(null);
     setFormName('');
     setFormURL('');
-    setFormEmail('');
+    setFormEmail('570956418@qq.com');
     setFormVersion('v1');
     setShowForm(true);
   };
@@ -210,7 +210,7 @@ const IPAMonitor = ({ onBack }) => {
     setEditingMonitor(null);
     setFormName('');
     setFormURL('');
-    setFormEmail('');
+    setFormEmail('570956418@qq.com');
     setFormVersion('');
   };
 

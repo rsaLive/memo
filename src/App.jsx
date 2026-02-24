@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from 'react'
-import { Bell, Plus, Check, Clock, X, Edit2, Calendar, Mail, LogOut, User, Shield, Radio, Lock, Settings } from 'lucide-react'
+import { Bell, Plus, Check, Clock, X, Edit2, Calendar, Mail, LogOut, User, Shield, Radio, Lock, Settings, Award } from 'lucide-react'
 import MemoForm from './components/MemoForm'
 import MemoCard from './components/MemoCard'
 import Login from './components/Login'
 import IOSCertCheck from './components/IOSCertCheck'
 import IPAMonitor from './components/IPAMonitor'
 import ChangePassword from './components/ChangePassword'
+import CertManagement from './components/CertManagement'
 import { getMemos, saveMemos, updateMemoStatus, deleteMemo, postponeMemo } from './utils/storage'
 import { isLoggedIn, getCurrentUser, logout } from './utils/auth'
 
@@ -184,6 +185,11 @@ function App() {
     return <IPAMonitor onBack={() => setCurrentView('memos')} />
   }
 
+  // SSL证书管理视图
+  if (currentView === 'cert-management') {
+    return <CertManagement onBack={() => setCurrentView('memos')} />
+  }
+
   // 密码修改视图
   if (currentView === 'change-password') {
     return (
@@ -219,6 +225,14 @@ function App() {
               </div>
             </div>
             <div className="flex items-center space-x-2">
+              <button
+                onClick={() => setCurrentView('cert-management')}
+                className="bg-gradient-to-r from-emerald-500 to-teal-600 text-white px-3 py-2 rounded-lg flex items-center space-x-2 hover:from-emerald-600 hover:to-teal-700 transition-all shadow-md hover:shadow-lg"
+                title="SSL证书管理"
+              >
+                <Award className="w-5 h-5" />
+                <span className="hidden md:inline">证书管理</span>
+              </button>
               <button
                 onClick={() => setCurrentView('ipa-monitor')}
                 className="bg-gradient-to-r from-teal-500 to-cyan-600 text-white px-3 py-2 rounded-lg flex items-center space-x-2 hover:from-teal-600 hover:to-cyan-700 transition-all shadow-md hover:shadow-lg"
