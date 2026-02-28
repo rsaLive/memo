@@ -1,0 +1,538 @@
+/* 域名管理样式 */
+.domain-management {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
+  padding: 20px;
+}
+
+.domain-container {
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+/* 头部 */
+.domain-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.domain-header-left {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.domain-back-btn {
+  padding: 10px 18px;
+  background: rgba(255, 255, 255, 0.2);
+  color: white;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: all 0.3s;
+}
+
+.domain-back-btn:hover {
+  background: rgba(255, 255, 255, 0.3);
+  transform: translateX(-2px);
+}
+
+.domain-title {
+  font-size: 32px;
+  font-weight: 700;
+  color: white;
+  margin: 0;
+}
+
+.domain-subtitle {
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.9);
+  margin: 4px 0 0 0;
+}
+
+.domain-header-actions {
+  display: flex;
+  gap: 12px;
+}
+
+/* 按钮样式 */
+.domain-management .dm-btn-primary,
+.domain-management .dm-btn-secondary,
+.domain-management .dm-btn-danger,
+.domain-management .dm-btn-cancel,
+.domain-management .dm-btn-small {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 500;
+  transition: all 0.3s;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.domain-management .dm-btn-primary {
+  background: white;
+  color: #11998e;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.domain-management .dm-btn-primary:hover:not(:disabled) {
+  background: #f8f9fa;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+}
+
+.domain-management .dm-btn-secondary {
+  background: rgba(255, 255, 255, 0.2);
+  color: white;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.domain-management .dm-btn-secondary:hover:not(:disabled) {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+.domain-management .dm-btn-danger {
+  background: #e74c3c;
+  color: white;
+}
+
+.domain-management .dm-btn-danger:hover {
+  background: #c0392b;
+  transform: translateY(-1px);
+}
+
+.domain-management .dm-btn-cancel {
+  background: #f0f0f0;
+  color: #666;
+}
+
+.domain-management .dm-btn-cancel:hover {
+  background: #e0e0e0;
+}
+
+.domain-management .dm-btn-small {
+  padding: 6px 14px;
+  font-size: 13px;
+}
+
+/* 提示信息 */
+.domain-alert {
+  padding: 12px 20px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  font-size: 14px;
+  animation: domainSlideDown 0.3s ease;
+}
+
+.domain-alert-success {
+  background: #d4edda;
+  color: #155724;
+  border: 1px solid #c3e6cb;
+}
+
+.domain-alert-error {
+  background: #f8d7da;
+  color: #721c24;
+  border: 1px solid #f5c6cb;
+}
+
+@keyframes domainSlideDown {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* 筛选栏 */
+.domain-filters {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 24px;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.domain-filter-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.domain-filter-item label {
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.9);
+  font-weight: 500;
+}
+
+.domain-filter-item select,
+.domain-filter-item input {
+  padding: 8px 12px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 8px;
+  font-size: 14px;
+  background: rgba(255, 255, 255, 0.9);
+  color: #333;
+  outline: none;
+}
+
+.domain-filter-item select:focus,
+.domain-filter-item input:focus {
+  border-color: white;
+  box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.2);
+}
+
+/* 统计卡片 */
+.domain-stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.domain-stat-card {
+  background: white;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s;
+}
+
+.domain-stat-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+}
+
+.domain-stat-number {
+  font-size: 32px;
+  font-weight: 700;
+  color: #333;
+}
+
+.domain-stat-label {
+  font-size: 14px;
+  color: #666;
+  margin-top: 4px;
+}
+
+.domain-stat-card.stat-on .domain-stat-number { color: #27ae60; }
+.domain-stat-card.stat-off .domain-stat-number { color: #e74c3c; }
+
+/* Loading */
+.domain-loading {
+  text-align: center;
+  padding: 60px 20px;
+  background: white;
+  border-radius: 12px;
+  color: #11998e;
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+}
+
+.domain-spinner {
+  width: 20px;
+  height: 20px;
+  border: 3px solid #eee;
+  border-top-color: #11998e;
+  border-radius: 50%;
+  animation: domainSpin 0.8s linear infinite;
+}
+
+@keyframes domainSpin {
+  to { transform: rotate(360deg); }
+}
+
+/* 空状态 */
+.domain-empty {
+  text-align: center;
+  padding: 80px 20px;
+  background: white;
+  border-radius: 12px;
+}
+
+.domain-empty-icon {
+  font-size: 64px;
+  margin-bottom: 16px;
+}
+
+.domain-empty h3 {
+  font-size: 20px;
+  color: #333;
+  margin-bottom: 8px;
+}
+
+.domain-empty p {
+  font-size: 14px;
+  color: #999;
+  margin-bottom: 24px;
+}
+
+/* 域名表格 */
+.domain-table-wrapper {
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  overflow-x: auto;
+}
+
+.domain-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.domain-table th {
+  padding: 14px 16px;
+  text-align: left;
+  font-size: 13px;
+  font-weight: 600;
+  color: #666;
+  background: #fafafa;
+  border-bottom: 1px solid #f0f0f0;
+  white-space: nowrap;
+}
+
+.domain-table td {
+  padding: 14px 16px;
+  font-size: 14px;
+  color: #333;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.domain-table tr:last-child td {
+  border-bottom: none;
+}
+
+.domain-table tr:hover td {
+  background: #f8fffe;
+}
+
+.domain-status-badge {
+  padding: 4px 12px;
+  border-radius: 12px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.domain-status-on {
+  background: #d4edda;
+  color: #155724;
+}
+
+.domain-status-off {
+  background: #f8d7da;
+  color: #721c24;
+}
+
+.domain-version-badge {
+  padding: 3px 10px;
+  border-radius: 10px;
+  font-size: 12px;
+  font-weight: 500;
+  background: #e8f4fd;
+  color: #1976d2;
+}
+
+.domain-table-actions {
+  display: flex;
+  gap: 8px;
+}
+
+/* 分页 */
+.domain-pagination {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 20px;
+  background: white;
+  border-radius: 0 0 12px 12px;
+  border-top: 1px solid #f0f0f0;
+}
+
+.domain-pagination-info {
+  font-size: 14px;
+  color: #666;
+}
+
+.domain-pagination-btns {
+  display: flex;
+  gap: 8px;
+}
+
+.domain-pagination-btns button {
+  padding: 6px 14px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  background: white;
+  color: #333;
+  cursor: pointer;
+  font-size: 13px;
+  transition: all 0.2s;
+}
+
+.domain-pagination-btns button:hover:not(:disabled) {
+  border-color: #11998e;
+  color: #11998e;
+}
+
+.domain-pagination-btns button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* 弹窗 */
+.domain-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: 20px;
+}
+
+.domain-modal {
+  background: white;
+  border-radius: 16px;
+  width: 100%;
+  max-width: 560px;
+  max-height: 90vh;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+  animation: domainModalSlideUp 0.3s ease;
+}
+
+@keyframes domainModalSlideUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.domain-modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 24px;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.domain-modal-header h3 {
+  font-size: 20px;
+  font-weight: 600;
+  color: #333;
+  margin: 0;
+}
+
+.domain-modal-close-btn {
+  background: none;
+  border: none;
+  font-size: 28px;
+  color: #999;
+  cursor: pointer;
+  padding: 0;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
+  transition: all 0.2s;
+}
+
+.domain-modal-close-btn:hover {
+  background: #f0f0f0;
+  color: #333;
+}
+
+.domain-form {
+  padding: 24px;
+  overflow-y: auto;
+}
+
+.domain-form-group {
+  margin-bottom: 20px;
+}
+
+.domain-form-group label {
+  display: block;
+  font-size: 14px;
+  font-weight: 500;
+  color: #333;
+  margin-bottom: 8px;
+}
+
+.domain-form-group input,
+.domain-form-group select {
+  width: 100%;
+  padding: 10px 14px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-size: 14px;
+  transition: all 0.3s;
+  box-sizing: border-box;
+}
+
+.domain-form-group input:focus,
+.domain-form-group select:focus {
+  outline: none;
+  border-color: #11998e;
+  box-shadow: 0 0 0 3px rgba(17, 153, 142, 0.1);
+}
+
+.domain-form-hint {
+  font-size: 12px;
+  color: #999;
+  margin-top: 4px;
+}
+
+.domain-form-actions {
+  display: flex;
+  gap: 12px;
+  justify-content: flex-end;
+  margin-top: 24px;
+  padding-top: 20px;
+  border-top: 1px solid #f0f0f0;
+}
+
+/* 响应式 */
+@media (max-width: 768px) {
+  .domain-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .domain-header-actions {
+    width: 100%;
+  }
+
+  .domain-header-actions button {
+    flex: 1;
+  }
+
+  .domain-filters {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .domain-filter-item {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .domain-table-actions {
+    flex-direction: column;
+  }
+}
